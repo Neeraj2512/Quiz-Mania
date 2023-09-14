@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PreSchool- Quiz</title>
+<link rel="stylesheet" href="style1.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+</head>
+<style>
+
+  
+body{
+  background-color: #c3aeae;
+}
+  .content {
+margin-top: 54px;
+
+  }
+  .container-fluid{
+margin-top: 200px;
+display:flex;
+justify-content: center;
+align-items: center;
+border: black;
+
+  }
+.header {
+padding: 15px;
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 9999;
+background-color: #918ab8;
+}
+.left-title {
+width: 80px;
+color: #050303;
+font-size: 18px;
+float: left;
+font-weight: bolder;
+}
+.right-title {
+width: 150px;
+text-align: right;
+float: right;
+color: #1a0606;
+font-weight: bolder;
+}
+.quiz-body {
+margin-top: 15px;
+padding-bottom: 50px;
+
+}
+.option-block-container {
+margin-top: 20px;
+max-width: 420px;
+
+
+}
+.option-block {
+padding: 10px;
+background: aliceblue;
+border: 1px solid #111920;
+margin-bottom: 10px;
+cursor: pointer;
+border-radius: 20px;
+}
+.result-question {
+font-weight: bold;
+}
+.c-wrong {
+margin-left: 20px;
+color: #ff0000;
+}
+.c-correct {
+margin-left: 20px;
+color: green;
+}
+.last-row {
+border-bottom: 1px solid #ccc;
+padding-bottom: 25px;
+margin-bottom: 25px;
+}
+.res-header {
+border-bottom: 1px solid #ccc;
+margin-bottom: 15px;
+padding-bottom: 15px;
+}
+.btn{
+  border-radius: 20px;
+  background: rgb(11,8,0);
+background: radial-gradient(circle, rgba(11,8,0,1) 20%, rgba(173,12,120,1) 47%, rgba(75,33,63,1) 71%);
+font-weight: bold;
+}
+</style>
+<body>
+<header class="header bg-primary">
+  <div class="left-title">KinderGarten Quiz</div>
+  <div class="right-title">Total Questions: <span id="tque"></span></div>
+  <div class="clearfix"></div>
+</header>
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<div id="result" class="quiz-body">
+<form name="quizForm" onSubmit="">
+<fieldset class="form-group">
+<h4><span id="qid">1.</span> <span id="question"></span></h4>
+<div class="option-block-container" id="question-options">
+</div> <!-- End of option block -->
+</fieldset>
+<button name="previous" id="previous" class="btn btn-success">Previous</button>
+&nbsp;
+<button name="next" id="next" class="btn btn-success">Next</button>
+</form>
+All Answers are in last Page</div>
+</div> <!-- End of col-sm-12 -->
+</div> <!-- End of row -->
+</div> <!-- ENd of container fluid -->
+</div> <!-- End of content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script>
+  
+var quiz = {
+  "JS": [
+ 
+            {
+              "id": 1,
+              "question": "How many months do we have in a Quarter Year?",
+              "options": [
+              {
+                "a": "2",
+            "b": "12",
+            "c": "4",
+            "d": "6"
+              }
+              ],
+              "answer": "4",
+              "score": 0,
+              "status": ""
+              },
+              {
+                "id": 2,
+                "question": "What is the shape of a pizza?",
+                "options": [
+                {
+                "a": "Circle",
+                "b": "Square",
+                "c": "Rectangle",
+                "d": "Oval"
+                }
+                ],
+                "answer": "Circle",
+                "score": 0,
+                "status": ""
+                },
+                {
+                  "id": 3,
+                  "question": "Who does control the Crime in City?",
+                  "options": [
+                  {
+                  "a": "Prime Minister",
+                  "b": "Police",
+                  "c": "Traffic Police",
+                  "d": "Engineer"
+                  }
+                  ],
+                  "answer": "Police",
+                  "score": 0,
+                  "status": ""
+                  },
+                  {
+                    "id": 4,
+                    "question": "How many sides does a Right Angle triangle have?",
+                    "options": [
+                    {
+                    "a": "1",
+                    "b": "2",
+                    "c": "3",
+                    "d": "4 "
+                    }
+                    ],
+                    "answer": "3",
+                    "score": 0,
+                    "status": ""
+                    },
+                    {
+                      "id": 5,
+                      "question": "How many sides does a square have?",
+                      "options": [
+                      {
+                        "a": "1",
+                    "b": "2",
+                    "c": "3",
+                    "d": "4"
+                      }
+                      ],
+                      "answer": "4",
+                      "score": 0,
+                      "status": ""
+                      },
+                      {
+                        "id": 6,
+                        "question": "How many toes do you have?",
+                        "options": [
+                        {
+                          "a": "10",
+                    "b": "2",
+                    "c": "3",
+                    "d": "4"
+                        }
+                        ],
+                        "answer": "10",
+                        "score": 0,
+                        "status": ""
+                        },
+
+
+
+                        <!--continue-->
+                        {
+                          "id": 7,
+                          "question": "Which tool we use to cut the paper?",
+                          "options": [
+                          {
+                          "a": "Rubber",
+                          "b": "Scissor",
+                          "c": "Teeth",
+                          "d": "Boat"
+                          }
+                          ],
+                          "answer": "Scissor",
+                          "score": 0,
+                          "status": ""
+                          },
+                          {
+                            "id": 8,
+                            "question": "How many sides does a Octagon have?",
+                            "options": [
+                            {
+                            "a": "1",
+                            "b": "2",
+                            "c": "8",
+                            "d": "6"
+                            }
+                            ],
+                            "answer": "8",
+                            "score": 0,
+                            "status": ""
+                            },
+                            {
+                              "id": 9,
+                              "question": "How many sides does a Hexagonal have?",
+                              "options": [
+                              {
+                              "a": "2",
+                              "b": "6",
+                              
+                              }
+                              ],
+                              "answer": "6",
+                              "score": 0,
+                              "status": ""
+                              },
+                              {
+                                "id": 10,
+                                "question": "How many sides does a pentagon have?",
+                                "options": [
+                                {
+                                "a": "1",
+                                "b": "2",
+                                "c": "3",
+                                "d": "5"
+                                }
+                                ],
+                                "answer": "5",
+                                "score": 0,
+                                "status": ""
+                                },
+                                {
+                                  "id": 11,
+                                  "question": "Traffic light of which colour says us to wait?",
+                                  "options": [
+                                  {
+                                  "a": "White",
+                                  "b": "Green",
+                                  "c": "Red",
+                                  "d": "Yellow"
+                                  }
+                                  ],
+                                  "answer": "White",
+                                  "score": 0,
+                                  "status": ""
+                                  },
+                                  {
+                                    "id": 12,
+                                    "question": "Which is the largest land animal?",
+                                    "options": [
+                                    {
+                                      "a": "Tiger",
+                                  "b": "Elephant",
+                                  "c": "Lion",
+                                  "d": "Giraffe"
+                                    }
+                                    ],
+                                    "answer": "Elephant",
+                                    "score": 0,
+                                    "status": ""
+                                    },
+                                    {
+                                      "id": 13,
+                                      "question": "What is the shape of a piece of pizza?",
+                                      "options": [
+                                      {
+                                      "a": "Circle",
+                                      "b": "Triangle",
+                                      "c": "Square",
+                                      "d": "Oval"
+                                      }
+                                      ],
+                                      "answer": "Triangle",
+                                      "score": 0,
+                                      "status": ""
+                                      },
+                                      {
+                                        "id": 14,
+                                        "question": "Which animal carries the baby in its pouch?",
+                                        "options": [
+                                        {
+                                        "a": "Kangaroo",
+                                        "b": "Whale",
+                                        "c": "Crocodile",
+                                        "d": "Starfish"
+                                        }
+                                        ],
+                                        "answer": "Kangaroo",
+                                        "score": 0,
+                                        "status": ""
+                                        },
+                                        {
+                                          "id": 15,
+                                          "question": "Which flower faces the sun?",
+                                          "options": [
+                                          {
+                                          "a": "Rose",
+                                          "b": "Mogra",
+                                          "c": "SunFlower",
+                                          "d": "Lotus"
+                                          }
+                                          ],
+                                          "answer": "SunFlower",
+                                          "score": 0,
+                                          "status": ""
+                                          },
+                                          {
+                                            "id": 16,
+                                            "question": "On Freezing water turns into?",
+                                            "options": [
+                                            {
+                                            "a": "Water",
+                                            "b": "Ice",
+                                            "c": "Juice",
+                                            "d": "Tee"
+                                            }
+                                            ],
+                                            "answer": "Ice",
+                                            "score": 0,
+                                            "status": ""
+                                            },
+                                            {
+                                              "id": 17,
+                                              "question": "Where do we find zebra crossing",
+                                              "options": [
+                                              {
+                                              "a": "Air",
+                                              "b": "Road",
+                                              "c": "Ocean",
+                                              "d": "Space"
+                                              }
+                                              ],
+                                              "answer": "Road",
+                                              "score": 0,
+                                              "status": ""
+                                              },
+                                              {
+                                                "id": 18,
+                                                "question": "Which fruit comes in bunch",
+                                                "options": [
+                                                {
+                                                "a": "Mango",
+                                                "b": "Apple",
+                                                "c": "Grapes",
+                                                "d": "Banana"
+                                                }
+                                                ],
+                                                "answer": "Grapes",
+                                                "score": 0,
+                                                "status": ""
+                                                },
+                                                {
+                                                  "id": 19,
+                                                  "question": "What is the colour of leaf when it dries?",
+                                                  "options": [
+                                                  {
+                                                    "a": "Yellow",
+                                                "b": "Red",
+                                                "c": "Green",
+                                                "d": "White"
+                                                  }
+                                                  ],
+                                                  "answer": "Yellow",
+                                                  "score": 0,
+                                                  "status": ""
+                                                  },
+                                                  {
+                                                    "id": 20,
+                                                    "question": "Which part of the body has all the sense organs?",
+                                                    "options": [
+                                                    {
+                                                      "a": "Eye",
+                                                "b": "Nose",
+                                                "c": "Head",
+                                                "d": "Lips"
+                                                    }
+                                                    ],
+                                                    "answer": "Head",
+                                                    "score": 0,
+                                                    "status": ""
+                                                    }
+
+
+
+
+
+
+
+  ]
+  }
+  var quizApp = function () {
+  this.score = 0;
+  this.qno = 1;
+  this.currentque = 0;
+  var totalque = quiz.JS.length;
+  this.displayQuiz = function (cque) {
+  this.currentque = cque;
+  if (this.currentque < totalque) {
+  $("#tque").html(totalque);
+  $("#previous").attr("disabled", false);
+  $("#next").attr("disabled", false);
+  $("#qid").html(quiz.JS[this.currentque].id + '.');
+  $("#question").html(quiz.JS[this.currentque].question);
+  $("#question-options").html("");
+  for (var key in quiz.JS[this.currentque].options[0]) {
+  if (quiz.JS[this.currentque].options[0].hasOwnProperty(key)) {
+  $("#question-options").append(
+  "<div class='form-check option-block'>" +
+  "<label class='form-check-label'>" +
+  "<input type='radio' class='form-check-input' name='option' id='q" + key + "' value='" + quiz.JS[this.currentque].options[0][key] + "'><span id='optionval'>" +
+  quiz.JS[this.currentque].options[0][key] +
+  "</span></label>"
+  );
+  }
+  }
+  }
+  if (this.currentque <= 0) {
+  $("#previous").attr("disabled", true);
+  }
+  if (this.currentque >= totalque) {
+  $('#next').attr('disabled', true);
+  for (var i = 0; i < totalque; i++) {
+  this.score = this.score + quiz.JS[i].score;
+  }
+  return this.showResult(this.score);
+  }
+  }
+  this.showResult = function (scr) {
+  $("#result").addClass('result');
+  $("#result").html("<h1 class='res-header'>Total Score: &nbsp;" + scr + '/' + totalque + "</h1>");
+  for (var j = 0; j < totalque; j++) {
+  var res;
+  if (quiz.JS[j].score == 0) {
+  res = '<span class="wrong">' + quiz.JS[j].score + '</span><i class="fa fa-remove c-wrong"></i>';
+  } else {
+  res = '<span class="correct">' + quiz.JS[j].score + '</span><i class="fa fa-check c-correct"></i>';
+  }
+  $("#result").append(
+  '<div class="result-question"><span>Q ' + quiz.JS[j].id + '</span> &nbsp;' + quiz.JS[j].question + '</div>' +
+  '<div><b>Correct answer:</b> &nbsp;' + quiz.JS[j].answer + '</div>' +
+  '<div class="last-row"><b>Score:</b> &nbsp;' + res +
+  '</div>'
+  );
+  }
+  }
+  this.checkAnswer = function (option) {
+  var answer = quiz.JS[this.currentque].answer;
+  option = option.replace(/</g, "&lt;") //for <
+  option = option.replace(/>/g, "&gt;") //for >
+  option = option.replace(/"/g, "&quot;")
+  if (option == quiz.JS[this.currentque].answer) {
+  if (quiz.JS[this.currentque].score == "") {
+  quiz.JS[this.currentque].score = 1;
+  quiz.JS[this.currentque].status = "correct";
+  }
+  } else {
+  quiz.JS[this.currentque].status = "wrong";
+  }
+  }
+  this.changeQuestion = function (cque) {
+  this.currentque = this.currentque + cque;
+  this.displayQuiz(this.currentque);
+  }
+  }
+  var jsq = new quizApp();
+  var selectedopt;
+  $(document).ready(function () {
+  jsq.displayQuiz(0);
+  $('#question-options').on('change', 'input[type=radio][name=option]', function (e) {
+  //var radio = $(this).find('input:radio');
+  $(this).prop("checked", true);
+  selectedopt = $(this).val();
+  });
+  });
+  $('#next').click(function (e) {
+  e.preventDefault();
+  if (selectedopt) {
+  jsq.checkAnswer(selectedopt);
+  }
+  jsq.changeQuestion(1);
+  });
+  $('#previous').click(function (e) {
+  e.preventDefault();
+  if (selectedopt) {
+  jsq.checkAnswer(selectedopt);
+  }
+  jsq.changeQuestion(-1);
+  });
+</script>
+</body>
+</html>

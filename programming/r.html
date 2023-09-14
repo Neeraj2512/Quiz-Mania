@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>R Language-Quiz </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        box-sizing: border-box;
+        border-radius: 10px;
+      }
+      body {
+        
+        background-size: cover;
+        min-height: 600px;
+        font-family: 'Times New Roman', Times, serif;
+        background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(231,218,228,1) 0%, rgba(252,0,255,1) 94%);
+      }
+      .jumbotron {
+      margin-bottom: 0;
+      background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(231,218,228,1) 0%, rgba(252,0,255,1) 94%);
+    }
+    
+    .jumbotron p {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 200;
+    text-align: center;
+   
+}
+
+    .GFG{
+      color: blue;
+            font-size: 100px;
+            font-weight: bold;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            
+    }
+    .row.content{
+      font-weight: bolder;
+      
+      
+    }
+    
+      nav {
+        text-align: center;
+      }
+      .menu {
+        display: inline-block;
+      }
+      .menu>li {
+        float: left;
+        color: #e298e1;
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
+        background: rgba(0, 0, 0, 0.7);
+        cursor: pointer;
+        font-size: 17px;
+      }
+      .sub-menu {
+        transform: scale(0);
+        transform-origin: top center;
+        transition: all 300ms ease-in-out;
+      }
+      
+      .sub-menu li {
+        font-size: 14px;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 8px 0;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        transform: scale(0);
+        transform-origin: top center;
+        transition: all 300ms ease-in-out;
+      }
+      .sub-menu li:last-child {
+        border-bottom: 0;
+      }
+      .sub-menu li:hover {
+        background: black;
+      }
+      .menu>li:hover .sub-menu li {
+        transform: scale(1);
+      }
+      .menu>li:hover .sub-menu {
+        transform: scale(1);
+      }
+
+
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color:black;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+
+
+
+<body>
+
+  <div class="jumbotron">
+    <div class="container text-center">
+      <div class="GFG">Quiz Bunny</div>      
+      <p>Mission, Education and Vision</p>
+    </div>
+  </div>
+  <hr/>
+  <br>
+  <nav>
+    <ul class="menu">
+      <li><a href="../index.html">
+        Home
+      </a>
+        <ul class="sub-menu">
+        </ul>
+      </li>
+      <li>
+        Premium
+        <ul class="sub-menu">
+          
+        </ul>
+      </li>
+      <li>
+        E-Learning
+        <ul class="sub-menu">
+          <li>
+            programming
+            <ul class="sub-menu1">
+            <!--<li>Java</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>C</li>
+            <li>C++</li>
+            <li>CSS</li>
+            <li>PHP</li>
+            <li>Kotlin</li>
+            <li>R</li>
+            <li>Scala</li>
+            <li>SQL</li>
+            <li>HTML</li>-->
+              
+
+            </ul>
+          </li>
+          <li>Goverment-Exam</li>
+          <li>School</li>
+    
+        
+        </ul>
+      </li>
+      <li>
+        Quiz-Marathon
+        <ul class="sub-menu">
+          
+        </ul>
+      </li>
+      <li>
+        Your Account
+        <ul class="sub-menu">
+          <li>Profile</li>
+          <li>My Attempt</li>
+          <li>My liberary</li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <br>
+  <hr/>
+
+
+
+  
+<div class="container-fluid text-left">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <ol>
+      <p><a href="./python.html">
+        <li>
+          Python-Quiz
+        </li></a></p>
+        <hr/>
+      <p><a href="./javascript.html">
+        <li>
+          JavaScript-Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="./sql.html">
+        <li>
+          Sql-Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="./c.html">
+        <li>
+          C-Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="./c++.html">
+        <li>
+          C++ Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="./css.html">
+        <li>
+          CSS Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="./html.html">
+        <li>
+          HTML Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="./kotlin.html">
+        <li>
+          Kotlin Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="./php.html">
+        <li>
+          PHP Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="./java.html">
+        <li>
+          Java Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="./scala.html">
+        <li>
+          scala Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/e-litmus.html">
+        <li>
+          E-litmus Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/cat.html">
+        <li>
+         CAT-Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/jee-mains.html">
+        <li>
+          JEE-Mains Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/jee.advanced.html">
+        <li>
+          JEE-Advanced-Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/m-cat.html">
+        <li>
+          M-CAT.Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/gate.html">
+        <li>
+          Gate Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/mppsc.html">
+        <li>
+          MPPSC-Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/nda.html">
+        <li>
+          NDA-Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/upsc.html">
+        <li>
+        UPPSC-Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/hindi.html">
+        <li>
+          Hindi-Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/ssc.html">
+        <li>
+         SSC Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../entrance/Varble.html">
+        <li>
+          Varble-Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../School/kindergarten.html">
+        <li>
+          Kindergarten-Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../School/class(1-3).html">
+        <li>
+          Class(1st-3rd) Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../School/class(4-5).html">
+        <li>
+          Class(4th-5th) Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../School/class(6-8).html">
+        <li>
+          Class(6th-8th) Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../School/class(9-10).html">
+        <li>
+          Class(9th & 10th) Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      <p><a href="../School/class(11-12).html">
+        <li>
+          Class(11th & 12th) Quiz.
+        </li>
+      </a></p>
+      <hr/>
+      </ol>
+    </div>
+
+
+
+
+    <div class="col-sm-8 text-left"> 
+      <h1>Welcome To R-Language Quiz</h1>
+      <img src="../image/coming soon.png" alt="">
+      <hr>
+      <h3>Test</h3>
+      <p>Lorem ipsum...</p>
+    </div>
+
+
+
+
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<footer class="py-3 my-4">
+  <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+    <li class="nav-item1"><a href="#" class="nav-link px-2 text-body-secondary"><h2>Company</h2></a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About Us</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Careers</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Legal</a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Ads With Us</a></li>
+    <hr>
+  </ul>
+  <p class="text-center text-body-secondary">© 2023 Company, Inc</p>
+</footer>
+
+</body>
+</html>

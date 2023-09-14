@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Quiz Bunny</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+  <script
+			  src="https://code.jquery.com/jquery-3.7.1.js"
+			  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+			  crossorigin="anonymous"></script>
+
+
+
+
+
+
+<style>
+  .topnav {
+  overflow: hidden;
+  background-color: #674e4e;
+
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.dropdown {
+  float: left;
+  overflow:hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: rgb(209, 89, 89);
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+
+
+
+
+
+
+<!--new-->
+
+    .panel{
+      border-radius: 10px 100px / 120px 100px;
+    }
+    .col-sm-4  {
+      
+      border-radius: 20px;
+      background: rgb(121,38,194);
+background: radial-gradient(circle, rgba(121,38,194,1) 19%, rgba(148,187,233,1) 100%);
+
+      
+    }
+
+  
+    
+
+   
+    
+    
+    .panel-heading{
+      background: rgb(130,71,63);
+background: radial-gradient(circle, rgba(130,71,63,1) 19%, rgba(148,187,233,1) 100%);
+      font-size: 20px;
+      font-weight: bold;
+      
+      
+    }
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+.panel-body{
+  background: rgb(130,63,66);
+background: radial-gradient(circle, rgba(130,63,66,1) 19%, rgba(148,187,233,1) 100%);
+}
+.panel-footer{
+  background: rgb(246,246,246);
+background: radial-gradient(circle, rgba(246,246,246,1) 0%, rgba(112,125,142,1) 31%);
+}
+.btn{
+  background: rgb(246,246,246);
+background: radial-gradient(circle, rgba(246,246,246,1) 0%, rgba(8,50,99,1) 0%);
+}
+
+
+    
+    
+    footer {
+      background-color:#3ab46d;
+      padding: 25px;
+      font-size: 20px;
+    }
+    h2 ,h4{
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: bold;
+      color: black;
+    }
+    h3{
+      color: #1d3958;
+    }
+
+
+
+
+
+
+     * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        box-sizing: border-box;
+        
+      }
+      body {
+        background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 19%, rgba(148,187,233,1) 100%);
+        min-height: 600px;
+        font-family: 'Times New Roman', Times, serif;
+      }
+      .jumbotron {
+      margin-bottom: 0;
+      background: rgb(203,166,192);
+background: linear-gradient(0deg, rgba(203,166,192,1) 11%, rgba(201,167,92,1) 100%);
+    }
+    .jumbotron p {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: bolder;
+    text-align: center;
+    color: #3a113e;
+   
+}
+
+    .GFG{
+      color: black;
+            font-size: 100px;
+            font-weight: bold;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            text-shadow: 8px 0 #3d8dee;
+    }
+
+
+
+
+
+</style>
+</head>
+<body>
+  
+  <div class="jumbotron">
+    <div class="container text-center">
+      <div class="GFG">Quiz Bunny</div>      
+      <p>Mission, Education and Vision</p>
+    </div>
+  </div>
+  <hr/>
+  <br>
+
+
+<div class="topnav" id="myTopnav">
+  <a href="#home" class="active">Home</a>
+  <a href="#news">Premium</a>
+  <a href="./navbar/projects.html">Projects</a>
+  <div class="dropdown">
+    <button class="dropbtn">E-Learning
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="./navbar/programing.html">programming</a>
+      <a href="#">Goverment-Exam</a>
+      <a href="#">School</a>
+    </div>
+  </div> 
+  <a href="#about">Blog</a>
+  <a href="#about">About</a>
+  <a href="#about">Account</a>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+<br/>
+<br/>
+
+
+
+
+  
+
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Java Quiz</h3></div>
+        <div class="panel-body"><img src="../image/NAVBAR-IMAGE/Java.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advancede Objective Types.<br>
+        <a href="../programming/java.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Python</h3></div>
+        <div class="panel-body"><img src="../image/NAVBAR-IMAGE/python.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./programming/python.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>JavaScript</h3></div>
+        <div class="panel-body"><img src="../image/NAVBAR-IMAGE/Javscript.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./programming/javascript.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>C-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/c.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advancede Objective Types.<br>
+        <a href="./programming/c.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>C++ Quiz</h3></div>
+        <div class="panel-body"><img src="./image/c++.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./programming/c++.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>HTML-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/html.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./programming/html.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>CSS-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/css.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advancede Objective Types.<br>
+        <a href="./programming/css.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>PHP-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/php.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./programming/php.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>R-Language Quiz</h3></div>
+        <div class="panel-body"><img src="./image/r.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./programming/r.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Scala-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/scala.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advancede Objective Types.<br>
+        <a href="./programming/scala.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Kotlin-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/kotlin.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./programming/kotlin.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>GATE-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/gate.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./entrance/gate.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>E-litmus</h3></div>
+        <div class="panel-body"><img src="./image/elitmus.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Last 5 years Blue Print.With Answer       <br>
+          <a href="./entrance/e-litmus.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Sql</h3></div>
+        <div class="panel-body"><img src="./image/sql.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+          <a href="./programming/sql.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Kindergarten Kids</h3></div>
+        <div class="panel-body"><img src="./image/(kin.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Simple Quiz,Kids friendly(Preschool,LKG,UKG).          <br>
+          <a href="./School/kindergarten.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Class (1st-3rd)</h3></div>
+        <div class="panel-body"><img src="./image/(class(1-3).png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Simple Quiz, Kids friendly(Both CBSE, ICSE and all government School).<br>
+          <a href="./School/class(1-3).html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Class (4th-5th)</h3></div>
+        <div class="panel-body"><img src="./image/class(4-5).png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Simple Quiz, Student friendly(Both CBSE, ICSE and all government School).<br>
+          <a href="./School/class(4-5).html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Class (6th-8th)</h3></div>
+        <div class="panel-body"><img src="./image/class(6-8).png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Simple Quiz, Student friendly(Both CBSE, ICSE and all government School).<br>
+          <a href="./School/class(6-8).html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Class-(9th-10th)</h3></div>
+        <div class="panel-body"><img src="./image/class(9-10).png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Based on the Blueprint of the last 10 years.<br>
+          <a href="./School/class(9-10).html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Class (11th-12th)</h3></div>
+        <div class="panel-body"><img src="./image/class(11-12).png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Based on the Blueprint of the last 10 years.<br>
+          <a href="./School/class(11-12).html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>JEE Mains</h3></div>
+        <div class="panel-body"><img src="./image/jee-m.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Based on the Blueprint of the last 10 years.<br>
+          <a href="./entrance/jee-mains.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>JEE Advanced</h3></div>
+        <div class="panel-body"><img src="./image/jee-ad.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Based on the Blueprint of the last 10 years.<br>
+          <a href="./entrance/jee.advanced.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>M-CAT</h3></div>
+        <div class="panel-body"><img src="./image/m-cat.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Based on the Blueprint of the last 5 years.<br>
+          <a href="./entrance/m-cat.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>CAT</h3></div>
+        <div class="panel-body"><img src="./image/cat.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Based on the Blueprint of the last 10 years.<br>
+          <a href="./entrance/cat.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+
+
+
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>NDA-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/nda.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advancede Objective Types.<br>
+        <a href="./entrance/nda.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>UPSC-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/upse.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./entrance/upsc.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>SSC-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/ssc.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./entrance/ssc.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>MPPSC-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/mppsc.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advancede Objective Types.<br>
+        <a href="./entrance/mppsc.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Verbal-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/verble.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./entrance/Varble.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h3>Hindi-Quiz</h3></div>
+        <div class="panel-body"><img src="./image/hindi.png" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">Beginner , Intermediate and Advanced Objective Types.<br>
+        <a href="./entrance/hindi.html" class="btn btn-primary">Let's Start</a></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+<br>
+<hr/>
+
+
+
+
+
+<div class="container-fluid text-center">
+  <h2>Why We Join Us</h2>
+  <h4>What we offer</h4>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-education" height="40"></span>
+      <h4>Educational Kit soon</h4>
+      <p>Quiz-Bunny is different then other website. we are prepare student..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-signal"></span>
+      <h4>5000+ Quiz</h4>
+      <p>Starting With 5000+ Quiz. This is totaly free website...</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-king"></span>
+      <h4>Quiz-Marathon</h4>
+      <p>Quiz-Marathon is also launching soon with great prizes..</p>
+    </div>
+    </div>
+    <br><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-folder-open"></span>
+      <h4>Project</h4>
+      <p>We are providing Progarming Projects with (Source Code)..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-phone"></span>
+      <h4>Quiz-Bunny App</h4>
+      <p>We Are launching Soon and also adding many quiz-section soon..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-envelope"></span>
+      <h4>Job Fair Soon</h4>
+      <p>Sigh Up For Better Experience...</p>
+    </div>
+  </div>
+</div><br>
+<br>
+<hr/>
+
+
+
+
+
+
+<footer class="py-3 my-4">
+  <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+    <li class="nav-item1"><a href="#" class="nav-link px-2 text-body-secondary"><h2>Company</h2></a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><h4>About Us</h4></a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><h4>Careers</h4></a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><h4>Contact Us</h4></a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><h4>Legal</h4></a></li>
+    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><h4>Ads With Us</h4></a></li>
+    <hr>
+  </ul>
+  <p class="text-center text-body-secondary">© 2023 Company, Inc</p>
+</footer>
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+
+</body>
+</html>
+
+

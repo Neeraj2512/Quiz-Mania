@@ -1,0 +1,379 @@
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beautiful MCQ Page</title>
+<style>
+  /* Your CSS styles here */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .question {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .options label {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .options label:hover {
+    background-color: #f4f4f4;
+  }
+  .options input[type="radio"] {
+    display: none;
+  }
+  .options label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    vertical-align: middle;
+    transition: border-color 0.3s ease;
+  }
+  .options input[type="radio"]:checked + label::before {
+    border-color: #2196F3;
+  }
+  #submit-btn {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #submit-btn:hover {
+    background-color: #0F8EEB;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="question">1. What is the capital of France?</div>
+  <div class="options">
+    <input type="radio" name="q1" id="q1a" value="a">
+    <label for="q1a">a) Paris</label>
+    <input type="radio" name="q1" id="q1b" value="b">
+    <label for="q1b">b) London</label>
+    <input type="radio" name="q1" id="q1c" value="c">
+    <label for="q1c">c) Berlin</label>
+  </div>
+</div>
+
+<div class="container">
+  <div class="question">2. Which planet is known as the "Red Planet"?</div>
+  <div class="options">
+    <input type="radio" name="q2" id="q2a" value="a">
+    <label for="q2a">a) Earth</label>
+    <input type="radio" name="q2" id="q2b" value="b">
+    <label for="q2b">b) Mars</label>
+    <input type="radio" name="q2" id="q2c" value="c">
+    <label for="q2c">c) Venus</label>
+  </div>
+</div>
+
+<div class="container">
+  <div class="question">3. What is 2 + 2?</div>
+  <div class="options">
+    <input type="radio" name="q3" id="q3a" value="a">
+    <label for="q3a">a) 3</label>
+    <input type="radio" name="q3" id="q3b" value="b">
+    <label for="q3b">b) 4</label>
+    <input type="radio" name="q3" id="q3c" value="c">
+    <label for="q3c">c) 5</label>
+  </div>
+</div>
+
+<button id="submit-btn">Submit Answers</button>
+
+<div class="result-section" id="result-section" style="display: none;">
+  <h2>Results</h2>
+  <div id="score-feedback"></div>
+</div>
+
+<script>
+document.getElementById('submit-btn').addEventListener('click', function() {
+  const answerElements = document.querySelectorAll('.options input[type="radio"]:checked');
+  let score = 0;
+  
+  // Individual question-answer mappings
+  const answers = {
+    q1: 'a',
+    q2: 'b',
+    q3: 'b'
+  };
+  
+  answerElements.forEach(answer => {
+    const questionName = answer.name;
+    const selectedAnswer = answer.value;
+    if (answers[questionName] === selectedAnswer) {
+      score++;
+    }
+  });
+
+  const resultSection = document.getElementById('result-section');
+  resultSection.style.display = 'block';
+
+  const scoreFeedback = document.getElementById('score-feedback');
+  scoreFeedback.innerHTML = `<p>You scored ${score} out of ${answerElements.length} questions.</p>`;
+
+  if (score === answerElements.length) {
+    scoreFeedback.innerHTML += "<p>Great job! You answered all questions correctly.</p>";
+  } else if (score === 0) {
+    scoreFeedback.innerHTML += "<p>Oops! Better luck next time.</p>";
+  } else {
+    scoreFeedback.innerHTML += "<p>Not bad! Keep practicing to improve.</p>";
+  }
+});
+</script>
+</body>
+</html>-->
+
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic MCQ with Timer</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  #question-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    max-width: 400px;
+  }
+
+  #options button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    text-align: left;
+  }
+
+  #options button:hover {
+    background-color: #e0e0e0;
+  }
+
+  #timer {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #555;
+  }
+</style>
+
+</head>
+<body>
+<div id="question-container">
+  <div id="question"></div>
+  <div id="options"></div>
+  <div id="timer">Time left: <span id="time">60</span> seconds</div>
+</div>
+<script>
+  const questionContainer = document.getElementById('question-container');
+  const questionDiv = document.getElementById('question');
+  const optionsDiv = document.getElementById('options');
+  const timerDiv = document.getElementById('timer');
+  const timeSpan = document.getElementById('time');
+
+  const questions = [
+    {
+      question: "What is the capital of France?",
+      options: ["Paris", "Berlin", "London", "Madrid"],
+      correctAnswer: "Paris"
+    },
+    {
+      question: "What is the capital of India?",
+      options: ["Paris", "Berlin", "London", "Madrid"],
+      correctAnswer: "Paris"
+    },
+    {
+      question: "What is the capital of Bangladesh?",
+      options: ["Delhi", "Bangalore", "Dhaka", "Madrid"],
+      correctAnswer: "Paris"
+    },
+    {
+      question: "What is the capital of MP?",
+      options: ["Nimach", "Bhopal", "Indore", "Uk"],
+      correctAnswer: "Bhopal"
+    },
+    // Add more questions here
+  ];
+
+  let currentQuestionIndex = 0;
+  let timeLeft = 60; // Initial time in seconds
+
+  function displayQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    questionDiv.textContent = currentQuestion.question;
+
+    optionsDiv.innerHTML = "";
+    currentQuestion.options.forEach((option, index) => {
+      const optionButton = document.createElement("button");
+      optionButton.textContent = option;
+      optionButton.addEventListener("click", () => checkAnswer(option));
+      optionsDiv.appendChild(optionButton);
+    });
+  }
+
+  function checkAnswer(selectedOption) {
+    const currentQuestion = questions[currentQuestionIndex];
+    if (selectedOption === currentQuestion.correctAnswer) {
+      // Handle correct answer
+      console.log("Correct!");
+    } else {
+      // Handle wrong answer
+      console.log("Incorrect!");
+    }
+
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+      displayQuestion();
+      resetTimer();
+    } else {
+      questionContainer.innerHTML = "Quiz completed!";
+    }
+  }
+
+  function updateTimer() {
+    timeSpan.textContent = timeLeft;
+    if (timeLeft === 0) {
+      checkAnswer(null); // Time's up, check answer with null value
+    } else {
+      timeLeft--;
+      setTimeout(updateTimer, 1000); // Update every second
+    }
+  }
+
+  function resetTimer() {
+    timeLeft = 60;
+    updateTimer();
+  }
+
+  displayQuestion();
+  updateTimer();
+</script>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* Basic styling for the table */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  /* Styling for odd rows */
+  tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+
+  /* Styling when hovering over a row */
+  tr:hover {
+    background-color: #e0e0e0;
+  }
+</style>
+<title>HTML CSS Table Example</title>
+</head>
+<body>
+
+<h1>Sample Table</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>John Doe</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jane Smith</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Michael Johnson</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Emily Brown</td>
+      <td>22</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
+
+

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PreSchool- Quiz</title>
+<link rel="stylesheet" href="style1.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+</head>
+<style>
+
+  
+body{
+  background-color: #c3aeae;
+}
+  .content {
+margin-top: 54px;
+
+  }
+  .container-fluid{
+margin-top: 200px;
+display:flex;
+justify-content: center;
+align-items: center;
+border: black;
+
+  }
+.header {
+padding: 15px;
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 9999;
+background-color: #918ab8;
+}
+.left-title {
+width: 80px;
+color: #050303;
+font-size: 18px;
+float: left;
+font-weight: bolder;
+}
+.right-title {
+width: 150px;
+text-align: right;
+float: right;
+color: #1a0606;
+font-weight: bolder;
+}
+.quiz-body {
+margin-top: 15px;
+padding-bottom: 50px;
+
+}
+.option-block-container {
+margin-top: 20px;
+max-width: 420px;
+
+
+}
+.option-block {
+padding: 10px;
+background: aliceblue;
+border: 1px solid #111920;
+margin-bottom: 10px;
+cursor: pointer;
+border-radius: 20px;
+}
+.result-question {
+font-weight: bold;
+}
+.c-wrong {
+margin-left: 20px;
+color: #ff0000;
+}
+.c-correct {
+margin-left: 20px;
+color: green;
+}
+.last-row {
+border-bottom: 1px solid #ccc;
+padding-bottom: 25px;
+margin-bottom: 25px;
+}
+.res-header {
+border-bottom: 1px solid #ccc;
+margin-bottom: 15px;
+padding-bottom: 15px;
+}
+.btn{
+  border-radius: 20px;
+  background: rgb(11,8,0);
+background: radial-gradient(circle, rgba(11,8,0,1) 20%, rgba(173,12,120,1) 47%, rgba(75,33,63,1) 71%);
+font-weight: bold;
+}
+</style>
+<body>
+<header class="header bg-primary">
+  <div class="left-title">KinderGarten Quiz</div>
+  <div class="right-title">Total Questions: <span id="tque"></span></div>
+  <div class="clearfix"></div>
+</header>
+<div class="content">
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<div id="result" class="quiz-body">
+<form name="quizForm" onSubmit="">
+<fieldset class="form-group">
+<h4><span id="qid">1.</span> <span id="question"></span></h4>
+<div class="option-block-container" id="question-options">
+</div> <!-- End of option block -->
+</fieldset>
+<button name="previous" id="previous" class="btn btn-success">Previous</button>
+&nbsp;
+<button name="next" id="next" class="btn btn-success">Next</button>
+</form>
+All Answers are in last Page</div>
+</div> <!-- End of col-sm-12 -->
+</div> <!-- End of row -->
+</div> <!-- ENd of container fluid -->
+</div> <!-- End of content -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script>
+  
+var quiz = {
+  "JS": [
+  {
+  "id": 1,
+  "question": "Which is the last month in a year?",
+  "options": [
+  {
+  "a": "January",
+  "b": "June",
+  "c": "December",
+  "d": "March"
+  }
+  ],
+  "answer": "December",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 2,
+  "question": "What is the colour of Sun?",
+  "options": [
+  {
+  "a": "Black",
+  "b": "Yellow",
+  "c": "Orange",
+  "d": "Blue"
+  }
+  ],
+  "answer": "Yellow",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 3,
+  "question": "What is the colour of Space?",
+  "options": [
+  {
+  "a": "Blue",
+  "b": "Voilet",
+  "c": "Black",
+  "d": "Sky"
+  }
+  ],
+  "answer": "Black",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 4,
+  "question": "What is the opposite of dark ?",
+  "options": [
+  {
+  "a": "Dark",
+  "b": "Light",
+  "c": "Blue",
+  "d": "White"
+  }
+  ],
+  "answer": "Light",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 5,
+  "question": "Where does a chick come from?",
+  "options": [
+  {
+  "a": "An Egg",
+  "b": "Womb",
+  "c": "Hospital",
+  "d": "Postman",
+  }
+  ],
+  "answer": "An Egg",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 6,
+  "question": "How many hand Dog have?",
+  "options": [
+  {
+  "a": "3",
+  "b": "5",
+  "c": "4",
+  "d": "0"
+  }
+  ],
+  "answer": "0",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 7,
+  "question": "How many tail a dog have?",
+  "options": [
+  {
+  "a": "2",
+  "b": "1",
+  "c": "4",
+  "d": "5"
+  }
+  ],
+  "answer": "1",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 8,
+  "question": "How Many Nose Cow have?",
+  "options": [
+  {
+  "a": "3",
+  "b": "1",
+  "c": "2",
+  "d": "5",
+  }
+  ],
+  "answer": "1",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 9,
+  "question": "How Many ears a cat Have?",
+  "options": [
+  {
+  "a": "1",
+  "b": "2",
+  "c": "3",
+  "d": "4"
+  }
+  ],
+  "answer": "2",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 10,
+  "question": "How many Eye a cat Have?",
+  "options": [
+  {
+  "a": "3",
+  "b": "4",
+  "c": "2",
+  "d": "1",
+  }
+  ],
+  "answer": "2",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 11,
+  "question": "How Many Leg a Dog have?",
+  "options": [
+  {
+  "a": "1",
+  "b": "3",
+  "c": "2",
+  "d": "4"
+  }
+  ],
+  "answer": "4",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 12,
+  "question": "Where do Sea Animal live?",
+  "options": [
+  {
+  "a": "House",
+  "b": "Tree",
+  "c": "Iglu",
+  "d": "Ocean"
+  }
+  ],
+  "answer": "Ocean",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 13,
+  "question": "Which Bird  Fly?",
+  "options": [
+  {
+  "a": "Horse",
+  "b": "Kivi",
+  "c": "Cow",
+  "d": "Ostrich"
+  }
+  ],
+  "answer": "Kivi",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 14,
+  "question": "Which bird used to carry mails in olden days?",
+  "options": [
+  {
+  "a": "Ostrich",
+  "b": "Pegion",
+  "c": "Sheep",
+  "d": "Kivi"
+  }
+  ],
+  "answer": "Pegion",
+  "score": 0,
+  "status": ""
+  },
+  {
+  "id": 15,
+  "question": "What is butter made from?",
+  "options": [
+  {
+  "a": "Milk",
+  "b": "Fruit",
+  "c": "Vegetable",
+  "d": "Juice"
+  }
+  ],
+  "answer": "Milk",
+  "score": 0,
+  "status": ""
+  }
+
+
+  ]
+  }
+  var quizApp = function () {
+  this.score = 0;
+  this.qno = 1;
+  this.currentque = 0;
+  var totalque = quiz.JS.length;
+  this.displayQuiz = function (cque) {
+  this.currentque = cque;
+  if (this.currentque < totalque) {
+  $("#tque").html(totalque);
+  $("#previous").attr("disabled", false);
+  $("#next").attr("disabled", false);
+  $("#qid").html(quiz.JS[this.currentque].id + '.');
+  $("#question").html(quiz.JS[this.currentque].question);
+  $("#question-options").html("");
+  for (var key in quiz.JS[this.currentque].options[0]) {
+  if (quiz.JS[this.currentque].options[0].hasOwnProperty(key)) {
+  $("#question-options").append(
+  "<div class='form-check option-block'>" +
+  "<label class='form-check-label'>" +
+  "<input type='radio' class='form-check-input' name='option' id='q" + key + "' value='" + quiz.JS[this.currentque].options[0][key] + "'><span id='optionval'>" +
+  quiz.JS[this.currentque].options[0][key] +
+  "</span></label>"
+  );
+  }
+  }
+  }
+  if (this.currentque <= 0) {
+  $("#previous").attr("disabled", true);
+  }
+  if (this.currentque >= totalque) {
+  $('#next').attr('disabled', true);
+  for (var i = 0; i < totalque; i++) {
+  this.score = this.score + quiz.JS[i].score;
+  }
+  return this.showResult(this.score);
+  }
+  }
+  this.showResult = function (scr) {
+  $("#result").addClass('result');
+  $("#result").html("<h1 class='res-header'>Total Score: &nbsp;" + scr + '/' + totalque + "</h1>");
+  for (var j = 0; j < totalque; j++) {
+  var res;
+  if (quiz.JS[j].score == 0) {
+  res = '<span class="wrong">' + quiz.JS[j].score + '</span><i class="fa fa-remove c-wrong"></i>';
+  } else {
+  res = '<span class="correct">' + quiz.JS[j].score + '</span><i class="fa fa-check c-correct"></i>';
+  }
+  $("#result").append(
+  '<div class="result-question"><span>Q ' + quiz.JS[j].id + '</span> &nbsp;' + quiz.JS[j].question + '</div>' +
+  '<div><b>Correct answer:</b> &nbsp;' + quiz.JS[j].answer + '</div>' +
+  '<div class="last-row"><b>Score:</b> &nbsp;' + res +
+  '</div>'
+  );
+  }
+  }
+  this.checkAnswer = function (option) {
+  var answer = quiz.JS[this.currentque].answer;
+  option = option.replace(/</g, "&lt;") //for <
+  option = option.replace(/>/g, "&gt;") //for >
+  option = option.replace(/"/g, "&quot;")
+  if (option == quiz.JS[this.currentque].answer) {
+  if (quiz.JS[this.currentque].score == "") {
+  quiz.JS[this.currentque].score = 1;
+  quiz.JS[this.currentque].status = "correct";
+  }
+  } else {
+  quiz.JS[this.currentque].status = "wrong";
+  }
+  }
+  this.changeQuestion = function (cque) {
+  this.currentque = this.currentque + cque;
+  this.displayQuiz(this.currentque);
+  }
+  }
+  var jsq = new quizApp();
+  var selectedopt;
+  $(document).ready(function () {
+  jsq.displayQuiz(0);
+  $('#question-options').on('change', 'input[type=radio][name=option]', function (e) {
+  //var radio = $(this).find('input:radio');
+  $(this).prop("checked", true);
+  selectedopt = $(this).val();
+  });
+  });
+  $('#next').click(function (e) {
+  e.preventDefault();
+  if (selectedopt) {
+  jsq.checkAnswer(selectedopt);
+  }
+  jsq.changeQuestion(1);
+  });
+  $('#previous').click(function (e) {
+  e.preventDefault();
+  if (selectedopt) {
+  jsq.checkAnswer(selectedopt);
+  }
+  jsq.changeQuestion(-1);
+  });
+</script>
+</body>
+</html>

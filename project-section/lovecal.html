@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Love-Calculator</title>
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+<style >
+ body{
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(../image/love.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+ }
+ header{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ 
+ }
+ .card-body{
+  background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(231,218,228,1) 0%, rgba(252,0,255,1) 94%);
+ }
+ .card-header{
+  background: rgb(121,38,194);
+background: radial-gradient(circle, rgba(121,38,194,1) 19%, rgba(148,187,233,1) 100%);
+border-radius: 20px;
+
+font-weight: bold;
+color: black;
+ }
+ .card-footer{
+  background: rgb(121,38,194);
+background: radial-gradient(circle, rgba(121,38,194,1) 19%, rgba(148,187,233,1) 100%);
+border-radius: 20px;
+
+font-weight: bold;
+color: black;
+ }
+ .btn{
+  border-radius: 30px;
+ }
+ .form-control{
+  border-radius: 20px;
+ }
+</style>
+</head>
+<body>
+
+<header >
+ 
+<div class="card w-50 m-auto text-center ">
+  <div class="card-header bg-danger text-white">LOVE CALCULATOR</div>
+  <div class="card-body">
+   <form class="form-inline w-75 m-auto">
+    <div class="form-group">
+     <input type="text" name="" class="form-control text-center" placeholder="Your Name" id="name" >
+    </div>
+    <div class="pl-4 pr-4">
+     <span> + </span>
+    </div>
+    <div class="form-group">
+     <input type="text" name="" class="form-control text-center" placeholder=" Her Name" id="lname">
+    </div>
+   </form> <br>
+    <div class="w-70 m-auto">
+     <button  class="btn btn-success w-50" onclick="checkloveper()"> Check </button>
+    </div>
+    <br>
+    <div>
+     <input type="text" name="" placeholder="LOVE SCORE" class="form-control text-center w-50 m-auto" id="lovevalue">
+    </div>
+  </div> 
+  <div class="card-footer ">Happy  RelationShip</div>
+</div>
+
+</header>
+
+<script>
+ function checkloveper(){
+
+  var name = document.getElementById('name').value;
+  var lname = document.getElementById('lname').value;
+
+  if(name == ""){
+   alert('Please enter your name');
+  }else if (name.length <=2 ) {
+   alert('Min lenght is 3')
+  }else if(!isNaN(name)){
+   alert('Numbers are not allowed');
+  }
+
+  else if(lname == ""){
+   alert('Please enter your love name');
+  }else if (lname.length <=2 ) {
+   alert('Min lenght is 3')
+  }else if(!isNaN(lname)){
+   alert('Numbers are not allowed');
+  }
+  else{
+  var lovdata = Math.random() * 100;
+  lovdata = Math.floor(lovdata);
+  document.getElementById('lovevalue').value = "Your Love Score is "+lovdata + "%"; 
+  
+  }
+  
+ }
+</script>
+
+
+</body>
+
+</html>
