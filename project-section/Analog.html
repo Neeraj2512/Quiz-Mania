@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Analog Clock (Web Development Project)</title>
+</head>
+<style>
+  *, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body{
+    background-image: linear-gradient(to right, #c5d2f2, #1270a3)
+    
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.clock{
+    height: 500px;
+    width: 500px;
+    background-color: rgba(192, 191, 235, 0.8);
+    border: 5px solid rgb(48, 41, 41);
+    border-radius: 30%;
+    position: relative;
+    overflow: hidden;
+    font-size: 2rem;
+    font-weight:bolder;
+}
+
+.clock::before{
+    height: 35px;
+    width: 35px;
+    content: '';
+    border-radius: 50%;
+    z-index: 10;
+    background-color: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} 
+
+#hour, #minute, #second{
+   
+    position: absolute;
+    transform-origin: bottom;
+    background-color: #000;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid #fff;
+}
+
+#hour{
+    
+    height: 30%;
+    width: 15px;
+    background-color: #3b0359;
+}
+
+#minute{
+
+    height: 38%;
+    width: 10px;
+    background-color: rgb(110, 238, 18);
+}
+
+#second{
+    
+    height: 45%;
+    width: 3px;
+    background-color: black;
+}
+
+.number{
+    padding: 8px;
+    --rotation: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: rotate(var(--rotation));
+}
+
+.number1{
+    --rotation: 30deg;
+}
+.number2{
+    --rotation: 60deg;
+}
+.number3{
+    --rotation: 90deg;
+}
+.number4{
+    --rotation: 120deg;
+}
+.number5{
+    --rotation: 150deg;
+}
+.number6{
+    --rotation: 180deg;
+}
+.number7{
+    --rotation: 210deg;
+}
+.number8{
+    --rotation: 240deg;
+}
+.number9{
+    --rotation: 270deg;
+}
+.number10{
+    --rotation: 300deg;
+}
+.number11{
+    --rotation: 330deg;
+}
+.number12{
+    --rotation: 0deg;
+}
+footer{
+  padding-top: 1.5rem;
+  font-size: 1.7rem;
+  line-height: 0.2rem;
+  text-align:center;
+}
+</style>
+
+<body>
+    <div class="container">
+        <div class="clock">
+          
+            <div id="hour" ></div>
+            <div id="minute" ></div>
+            <div id="second" ></div>
+            <div class="number number1">1</div>
+            <div class="number number2">2</div>
+            <div class="number number3">3</div>
+            <div class="number number4">4</div>
+            <div class="number number5">5</div>
+            <div class="number number6">6</div>
+            <div class="number number7">7</div>
+            <div class="number number8">8</div>
+            <div class="number number9">9</div>
+            <div class="number number10">10</div>
+            <div class="number number11">11</div>
+            <div class="number number12">12</div>
+        </div>
+    </div>
+   
+   
+    <script>
+      setInterval(getCurrentTime, 1000);
+
+    
+function getCurrentTime() {
+    var currentTime =  new Date();
+    var hourRatio = currentTime.getHours();
+    var minuteRatio = currentTime.getMinutes();
+    var secondRatio = currentTime.getSeconds();
+    let hourHand = (30*hourRatio) + (minuteRatio/2);
+    let minuteHand = (6*minuteRatio);
+    let secondHand = (6*secondRatio);
+
+    hour.style.transform = `rotate(${hourHand}deg)`;
+    minute.style.transform = `rotate(${minuteHand}deg)`;
+    second.style.transform = `rotate(${secondHand}deg)`;
+
+}
+    </script>
+     <footer>
+      
+      <p>Follow My Account</p>
+      <p><img src="../image/social icons/linkedin.png" alt=""><img src="../image/social icons/telegram.png">
+      <img src="../image/social icons/gmail.png">
+    <img src="../image/social icons/paypal.png" alt=""></p>
+
+    </footer>
+</body>
+
+</html>

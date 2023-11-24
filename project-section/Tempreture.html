@@ -1,0 +1,164 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+
+  <title>Temperature Converter(celsius ,fahrenheit, kelvin)</title>
+
+</head>
+<style>
+  body{
+  margin-top: 60px;
+  text-align:center;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+  padding-bottom: 0.5rem;
+}
+
+input[type=number] {
+  cursor: pointer;
+}
+
+#input-celsius{
+  background-color: #8ee25a;
+  border-radius: 50px;
+  font-size: 2.5rem;
+}
+
+#input-fahrenheit{
+  background-color: #8c3ed9;
+  border-radius: 50px;
+  font-size: 2.5rem;
+}
+
+#input-kelvin{
+  background-color: #df2d4b;
+  border-radius: 50px;
+  font-size: 2.5rem;
+}
+
+.form-padding {
+  padding: 2rem 1rem;
+}
+
+::-webkit-input-placeholder {
+  color: #FFFFFF !important;
+}
+::-moz-placeholder {
+  color: #FFFFFF !important;
+}
+:-ms-input-placeholder {
+  color: #FFFFFF !important;
+}
+:-moz-placeholder {
+  color: #FFFFFF !important;
+}
+
+footer{
+  padding-top: 1.5rem;
+  font-size: 1.7rem;
+  line-height: 0.2rem;
+  text-align:center;
+}
+
+.icons{
+  max-width: 25px;
+  
+  height: auto;
+}
+</style>
+<body>
+
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-6 text-center">
+        <h1>Temperature Converter</h1>
+
+        <div id="celsius">
+          <input type="number" class="form-control form-control-lg form-padding" id="input-celsius" placeholder="celsius">
+
+        </div>
+
+        <div id="fahrenheit">
+          <input type="number" class="form-control form-control-lg form-padding" id="input-fahrenheit" placeholder="fahrenheit">
+
+        </div>
+
+        <div id="kelvin">
+          <input type="number" class="form-control form-control-lg form-padding" id="input-kelvin" placeholder="kelvin">
+
+        </div>
+
+      </div>
+
+    </div>
+    <footer>
+          <p>By Neeraj</p>
+          <hr/>
+          <p>Follow My Account</p>
+          <p><img src="../image/social icons/linkedin.png" alt=""><img src="../image/social icons/telegram.png">
+          <img src="../image/social icons/gmail.png">
+        <img src="../image/social icons/paypal.png" alt=""></p>
+
+        </footer>
+
+  </div>
+
+  <script>
+    const celsiusInput = document.querySelector('#celsius > input');
+const fahrenheitInput = document.querySelector('#fahrenheit > input');
+const kelvinInput = document.querySelector('#kelvin > input');
+
+const roundToTwoDP = (num) => {
+  return num.toFixed(2);
+};
+
+
+const celsiusToFaAndKe = () => {
+  const celsiusTemp = parseFloat(celsiusInput.value);
+  const fahrenheitTemp = (celsiusTemp * 1.8) + 32;
+  const kelvinTemp = celsiusTemp + 273.15;
+
+  fahrenheitInput.value = roundToTwoDP(fahrenheitTemp);
+  kelvinInput.value = roundToTwoDP(kelvinTemp);
+};
+
+
+const fahrenheitToCeAndKe = () => {
+  const fahrenheitTemp = parseFloat(fahrenheitInput.value);
+  const celsiusTemp = (fahrenheitTemp - 32) * (5 / 9);
+  const kelvinTemp = (fahrenheitTemp + 459.67) * (5 / 9);
+
+  celsiusInput.value = roundToTwoDP(celsiusTemp);
+  kelvinInput.value = roundToTwoDP(kelvinTemp);
+};
+
+const kelvinToCeAndFa = () => {
+  const kelvinTemp = parseFloat(kelvinInput.value);
+  const celsiusTemp = kelvinTemp - 273;
+  const fahrenheitTemp =  1.8 * (kelvinTemp - 273) + 32;
+
+  celsiusInput.value = roundToTwoDP(celsiusTemp);
+  fahrenheitInput.value = roundToTwoDP(fahrenheitTemp);
+};
+
+
+const main = () => {
+  celsiusInput.addEventListener('input', celsiusToFaAndKe);
+  fahrenheitInput.addEventListener('input', fahrenheitToCeAndKe);
+  kelvinInput.addEventListener('input', kelvinToCeAndFa);
+};
+
+main();
+  </script>
+</body>
+</html>
